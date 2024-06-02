@@ -32,7 +32,7 @@ Code:<br>
 
 using namespace std;
 
-int solve(vector<int> &k , int ind , int p , int a , int b){
+int canAbhimanyuCross(vector<int> &k , int ind , int p , int a , int b){
 
     if(ind == 12) return 1;               // If Abhimanyu has crossed all circles return true.
     
@@ -45,18 +45,18 @@ int solve(vector<int> &k , int ind , int p , int a , int b){
     }
 
     if(p >= attack) {                    // If power of Abhimanyu is greater than or equal to the power of attack of that circle
-        ans |= solve(k , ind+1 , p-attack , a , b);
+        ans |= canAbhimanyuCross(k , ind+1 , p-attack , a , b);
     }
     else {                              // If If power of Abhimanyu is less than the power of attack of that circle
         int d = attack - p;
         if(b >= d){
-            ans |= solve(k , ind+1 , 0 , a , b-d);
+            ans |= canAbhimanyuCross(k , ind+1 , 0 , a , b-d);
         }
     }
 
     // If the number of skips is still left
     
-    if(a > 0) ans |= solve(k , ind+1 , p , a-1 , b);
+    if(a > 0) ans |= canAbhimanyuCross(k , ind+1 , p , a-1 , b);
 
     return ans;
 }
@@ -72,7 +72,7 @@ int main(){
         cin >> k[i];                    // Taking input of power of enemy at each circle
     }
 
-    int ans = solve(k , 1 , p , a , b);           // Calling the function
+    int ans = canAbhimanyuCross(k , 1 , p , a , b);           // Calling the function
 
     cout << ans << endl;                          // Printing the answer.
     return 0;
@@ -80,7 +80,7 @@ int main(){
 ```
 Explanation:
 -
--I have used simple recursion here, since the number of circle is 11 only.
+-I have used simple recursion here, since the number of circles is 11 only.
 
 -At each circle, Abhimanyu has few choices to take.
 
@@ -91,3 +91,5 @@ Explanation:
 -Or If there is still a chance of skip, he can take that option (depends on a).
 
 -If Abhimanyu crosses all circles, true is returned else false is returned.
+
+- We can further optimize it with Dynamic Programming if needed.
