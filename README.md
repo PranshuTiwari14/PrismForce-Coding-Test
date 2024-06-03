@@ -64,11 +64,18 @@ int canAbhimanyuCross(vector<int> &k , int ind , int p , int a , int b){
 int main(){
 
     int p , a , b;
-    
-    cin>>p>>a>>b;                     // Taking input of intial power of Abhimanyu, No of skips, No of times he can recharge
+    // Taking input of intial power of Abhimanyu, No of skips, No of times he can recharge
+    cout << "Enter the intial power of Abhimanyu:" << " ";
+    cin >> p;
+    cout << "Enter the no of skips available with Abhimanyu:" << " ";
+    cin >> a;
+    cout << "Enter the no of recharge available with Abhimanyu:" << " ";
+    cin >> b;
+                         
 
     vector<int> k(12);
     for(int i = 1; i <= 11 ; i ++){
+        cout << "Power of Enemy"<< " " <<i <<": ";
         cin >> k[i];                    // Taking input of power of enemy at each circle
     }
 
